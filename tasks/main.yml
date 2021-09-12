@@ -1,0 +1,81 @@
+---
+# Copyright (C) 2021 Robert Wimmer
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+- name: Ensure CNI bin directory
+  file:
+    path: "{{ cni_bin_directory }}"
+    state: directory
+    mode: 0755
+    owner: "{{ cni_owner | default('omit') }}"
+    group: "{{ cni_group | default('omit') }}"
+  tags:
+    - cni-download
+
+- name: Ensure TMP directory
+  file:
+    path: "{{ cni_tmp_directory }}"
+    state: directory
+    mode: 0755
+    owner: "{{ cni_owner | default('omit') }}"
+    group: "{{ cni_group | default('omit') }}"
+  tags:
+    - cni-download
+
+- name: Ensure CNI configuration directory
+  file:
+    path: "{{ cni_conf_directory }}"
+    state: directory
+    mode: 0755
+    owner: "{{ cni_owner | default('omit') }}"
+    group: "{{ cni_group | default('omit') }}"
+  tags:
+    - cni-conf
+
+- name: Downloading cni archive
+  get_url:
+    url: "{{ cni_url }}"
+    dest: "{{ cni_tmp_directory }}/{{ cni_archive }}"
+    mode: 0640
+    checksum: "sha256:{{ cni_url }}.sha256"
+  tags:
+    - cni-download
+
+- name: Unarchive CNI archiv
+  unarchive:
+    src: "{{ cni_tmp_directory }}/{{ cni_archive }}"
+    dest: "{{ cni_tmp_directory }}"
+    remote_src: true
+  notify:
+    - restart kubelet
+  tags:
+    - cni-unarchive
+    - cni-download
+
+- name: Copy CNI binary to destination directory
+  copy:
+    src: "{{ cni_tmp_directory }}/{{ item }}"
+    dest: "{{ cni_bin_directory }}/{{ item }}"
+    mode: "{{ cni_binary_mode }}"
+    owner: "{{ cni_owner | default(omit) }}"
+    group: "{{ cni_group | default(omit) }}"
+    remote_src: true
+  with_items:
+    - macvlan
+    - static
+    - vlan
+    - portmap
+    - host-local
+    - vrf
+    - bridge
+    - tuning
+    - firewall
+    - host-device
+    - sbr
+    - loopback
+    - dhcp
+    - ptp
+    - ipvlan
+    - bandwidth
+  tags:
+    - cni-install
