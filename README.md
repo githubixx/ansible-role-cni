@@ -8,7 +8,7 @@ Role Variables
 
 ```yaml
 # CNI plugin version
-cni_version: "1.0.1"
+cni_version: "1.1.1"
 
 # CNI binary directory
 cni_bin_directory: "/opt/cni/bin"
