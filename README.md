@@ -3,12 +3,17 @@ ansible-role-cni
 
 Ansible role to install [CNI - Container Network Interface](https://github.com/containernetworking/plugins). [CNI](https://www.cni.dev/) (Container Network Interface), a Cloud Native Computing Foundation project, consists of a specification and libraries for writing plugins to configure network interfaces in Linux containers, along with a number of supported plugins. CNI concerns itself only with network connectivity of containers and removing allocated resources when the container is deleted. Because of this focus, CNI has a wide range of support and the specification is simple to implement.
 
+Changelog
+---------
+
+see [CHANGELOG](https://github.com/githubixx/ansible-role-cni/blob/master/CHANGELOG.md)
+
 Role Variables
 --------------
 
 ```yaml
 # CNI plugin version
-cni_version: "1.0.1"
+cni_version: "1.1.1"
 
 # CNI binary directory
 cni_bin_directory: "/opt/cni/bin"
