@@ -41,7 +41,7 @@
   tags:
     - cni-download
 
-- name: Unarchive CNI archiv
+- name: Unarchive CNI archive
   ansible.builtin.unarchive:
     src: "{{ cni_tmp_directory }}/{{ cni_archive }}"
     dest: "{{ cni_tmp_directory }}"
