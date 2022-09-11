@@ -32,7 +32,7 @@ cni_group: "root"
 # Specifies the permissions of the "CNI" binaries
 cni_binary_mode: "0755"
 
-# Operarting system
+# Operating system
 # Possible options: "linux", "windows"
 cni_os: "linux"
 
@@ -92,4 +92,3 @@ Author Information
 ------------------
 
 [http://www.tauceti.blog](http://www.tauceti.blog)
-
