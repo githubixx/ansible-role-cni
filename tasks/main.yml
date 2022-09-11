@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 - name: Ensure CNI bin directory
-  file:
+  ansible.builtin.file:
     path: "{{ cni_bin_directory }}"
     state: directory
     mode: 0755
@@ -13,7 +13,7 @@
     - cni-download
 
 - name: Ensure TMP directory
-  file:
+  ansible.builtin.file:
     path: "{{ cni_tmp_directory }}"
     state: directory
     mode: 0755
@@ -23,7 +23,7 @@
     - cni-download
 
 - name: Ensure CNI configuration directory
-  file:
+  ansible.builtin.file:
     path: "{{ cni_conf_directory }}"
     state: directory
     mode: 0755
@@ -33,7 +33,7 @@
     - cni-conf
 
 - name: Downloading cni archive
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ cni_url }}"
     dest: "{{ cni_tmp_directory }}/{{ cni_archive }}"
     mode: 0640
@@ -41,19 +41,19 @@
   tags:
     - cni-download
 
-- name: Unarchive CNI archiv
-  unarchive:
+- name: Unarchive CNI archive
+  ansible.builtin.unarchive:
     src: "{{ cni_tmp_directory }}/{{ cni_archive }}"
     dest: "{{ cni_tmp_directory }}"
     remote_src: true
   notify:
-    - restart kubelet
+    - Restart kubelet
   tags:
     - cni-unarchive
     - cni-download
 
 - name: Copy CNI binary to destination directory
-  copy:
+  ansible.builtin.copy:
     src: "{{ cni_tmp_directory }}/{{ item }}"
     dest: "{{ cni_bin_directory }}/{{ item }}"
     mode: "{{ cni_binary_mode }}"
