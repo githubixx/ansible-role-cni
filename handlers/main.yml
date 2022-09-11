@@ -2,7 +2,7 @@
 # Copyright (C) 2021-2022 Robert Wimmer
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-- name: restart kubelet
+- name: Restart kubelet
   ansible.builtin.service:
     name: kubelet
     state: restarted

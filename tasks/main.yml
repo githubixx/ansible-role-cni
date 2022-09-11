@@ -47,7 +47,7 @@
     dest: "{{ cni_tmp_directory }}"
     remote_src: true
   notify:
-    - restart kubelet
+    - Restart kubelet
   tags:
     - cni-unarchive
     - cni-download
