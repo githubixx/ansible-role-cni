@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.0+1.2.0
+
+- update `cni_version` to `1.2.0`
+- fix Molecule `converge.yml`
+
 ## 0.3.0+1.1.1
 
 - fix various `ansible-lint' issues
