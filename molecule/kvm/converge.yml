@@ -2,30 +2,34 @@
 # Copyright (C) 2021-2022 Robert Wimmer
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-- hosts: all
+- hosts: test-cni-arch
+  remote_user: vagrant
+  become: true
+  gather_facts: false
+  tasks:
+    - name: Init pacman
+      ansible.builtin.raw: |
+        pacman-key --init
+        pacman-key --populate archlinux
+      changed_when: false
+      failed_when: false
+
+    - name: Install Python
+      ansible.builtin.raw: |
+        pacman -S --noconfirm python
+      args:
+        executable: /bin/bash
+      changed_when: false
+
+- hosts: test-cni-ubuntu1804,test-cni-ubuntu2004
   remote_user: vagrant
   become: true
   gather_facts: true
   tasks:
-    - block:
-      - name: (Archlinux) Init pacman
-        raw: |
-          pacman-key --init
-          pacman-key --populate archlinux
-        changed_when: false
-        ignore_errors: true
-
-      - name: (Archlinux) Update pacman cache
-        pacman:
-          update_cache: yes
-        changed_when: false
-      when: ansible_distribution|lower == 'archlinux'
-
-    - name: (Ubuntu) Update APT package cache
+    - name: Update APT package cache
       apt:
-        update_cache: "true"
+        update_cache: true
         cache_valid_time: 3600
-      when: ansible_distribution|lower == 'ubuntu'
 
 - hosts: all
   remote_user: vagrant
