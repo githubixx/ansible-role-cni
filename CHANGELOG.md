@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0+1.3.0
+
+- update `cni_version` to `1.3.0`
+
 ## 0.4.0+1.2.0
 
 - update `cni_version` to `1.2.0`
