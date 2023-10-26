@@ -72,7 +72,7 @@ This role has a small test setup that is created using [Molecule](https://github
 Afterwards molecule can be executed:
 
 ```bash
-molecule converge -s kvm
+molecule converge
 ```
 
 This will setup a few virtual machines (VM) with different supported Linux operating systems and installs `CNI`.
@@ -80,7 +80,7 @@ This will setup a few virtual machines (VM) with different supported Linux opera
 To clean up run
 
 ```bash
-molecule destroy -s kvm
+molecule destroy
 ```
 
 License
