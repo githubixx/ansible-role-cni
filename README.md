@@ -13,7 +13,7 @@ Role Variables
 
 ```yaml
 # CNI plugin version
-cni_version: "1.2.0"
+cni_version: "1.3.0"
 
 # CNI binary directory
 cni_bin_directory: "/opt/cni/bin"
@@ -22,7 +22,7 @@ cni_bin_directory: "/opt/cni/bin"
 cni_conf_directory: "/etc/cni/net.d"
 
 # Directory to store the archive
-cni_tmp_directory: "{{ lookup('env', 'TMPDIR') | default('/tmp',true) }}"
+cni_tmp_directory: "{{ lookup('env', 'TMPDIR') | default('/tmp', true) }}"
 
 # Owner/group of "CNI" files/directories. If the variables are not set
 # the resulting binary will be owned by the current user.
@@ -72,15 +72,21 @@ This role has a small test setup that is created using [Molecule](https://github
 Afterwards molecule can be executed:
 
 ```bash
-molecule converge -s kvm
+molecule converge
 ```
 
 This will setup a few virtual machines (VM) with different supported Linux operating systems and installs `CNI`.
 
+To run a few tests:
+
+```bash
+molecule verify
+```
+
 To clean up run
 
 ```bash
-molecule destroy -s kvm
+molecule destroy
 ```
 
 License

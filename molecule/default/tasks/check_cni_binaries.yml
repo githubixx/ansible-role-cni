@@ -1,0 +1,15 @@
+---
+- name: TODO
+  ansible.builtin.debug:
+    msg: "Checking {{ item.path }} CNI plugin"
+
+- name: Execute CNI plugin to capture output
+  ansible.builtin.command:
+    cmd: "{{ item.path }}"
+  register: version_output
+  changed_when: false
+
+- name: Ensure output contains correct version string
+  ansible.builtin.assert:
+    that:
+      - "expected_output in version_output.stderr"

@@ -1,8 +1,9 @@
 ---
-# Copyright (C) 2021-2022 Robert Wimmer
+# Copyright (C) 2021-2023 Robert Wimmer
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-- hosts: test-cni-arch
+- name: Prepare Archlinux
+  hosts: archlinux
   remote_user: vagrant
   become: true
   gather_facts: false
@@ -14,6 +15,18 @@
       changed_when: false
       failed_when: false
 
+    - name: Updating pacman cache
+      ansible.builtin.raw: |
+        pacman -Sy
+      changed_when: false
+
+    - name: Upgrade the whole system
+      ansible.builtin.raw: |
+        pacman --noconfirm -Su
+      args:
+        executable: /bin/bash
+      changed_when: false
+
     - name: Install Python
       ansible.builtin.raw: |
         pacman -S --noconfirm python
@@ -21,21 +34,13 @@
         executable: /bin/bash
       changed_when: false
 
-- hosts: test-cni-ubuntu1804,test-cni-ubuntu2004
+- name: Prepare Ubuntu
+  hosts: ubuntu
   remote_user: vagrant
   become: true
   gather_facts: true
   tasks:
     - name: Update APT package cache
-      apt:
+      ansible.builtin.apt:
         update_cache: true
         cache_valid_time: 3600
-
-- hosts: all
-  remote_user: vagrant
-  become: true
-  gather_facts: true
-  tasks:
-    - name: Include CNI role
-      include_role:
-        name: githubixx.cni
