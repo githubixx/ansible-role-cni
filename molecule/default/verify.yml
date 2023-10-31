@@ -1,0 +1,20 @@
+---
+- name: Verify setup
+  hosts: all
+  vars:
+    expected_output: "CNI protocol versions supported"
+  tasks:
+    - name: Include default role variables
+      ansible.builtin.include_vars:
+        dir: '{{ lookup("env", "MOLECULE_PROJECT_DIRECTORY") }}/defaults/'
+        extensions:
+          - 'yml'
+
+    - name: Get list of available CNI plugins
+      ansible.builtin.find:
+        paths: "{{ cni_bin_directory }}"
+      register: cni__binaries_found
+
+    - name: Execute CNI binaries to capture output
+      ansible.builtin.include_tasks: tasks/check_cni_binaries.yml
+      loop: "{{ cni__binaries_found['files'] }}"
