@@ -22,7 +22,7 @@ cni_bin_directory: "/opt/cni/bin"
 cni_conf_directory: "/etc/cni/net.d"
 
 # Directory to store the archive
-cni_tmp_directory: "{{ lookup('env', 'TMPDIR') | default('/tmp',true) }}"
+cni_tmp_directory: "{{ lookup('env', 'TMPDIR') | default('/tmp', true) }}"
 
 # Owner/group of "CNI" files/directories. If the variables are not set
 # the resulting binary will be owned by the current user.
@@ -76,6 +76,12 @@ molecule converge
 ```
 
 This will setup a few virtual machines (VM) with different supported Linux operating systems and installs `CNI`.
+
+To run a few tests:
+
+```bash
+molecule verify
+```
 
 To clean up run
 
