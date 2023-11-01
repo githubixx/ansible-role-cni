@@ -12,6 +12,10 @@
   tags:
     - cni-download
 
+- name: Add subpath to tmp directory
+  ansible.builtin.set_fact:
+    cni_tmp_directory: "{{ cni_tmp_directory }}/cni_tmp"
+
 - name: Ensure TMP directory
   ansible.builtin.file:
     path: "{{ cni_tmp_directory }}"
@@ -45,6 +49,7 @@
   ansible.builtin.unarchive:
     src: "{{ cni_tmp_directory }}/{{ cni_archive }}"
     dest: "{{ cni_tmp_directory }}"
+    mode: "0755"
     remote_src: true
   notify:
     - Restart kubelet
