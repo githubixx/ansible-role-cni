@@ -6,7 +6,7 @@ Ansible role to install [CNI - Container Network Interface](https://github.com/c
 Changelog
 ---------
 
-**Change history**
+**Change history:**
 
 See full [CHANGELOG](https://github.com/githubixx/ansible-role-cni/blob/master/CHANGELOG.md)
 
