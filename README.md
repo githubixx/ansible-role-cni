@@ -6,7 +6,25 @@ Ansible role to install [CNI - Container Network Interface](https://github.com/c
 Changelog
 ---------
 
-see [CHANGELOG](https://github.com/githubixx/ansible-role-cni/blob/master/CHANGELOG.md)
+**Change history**
+
+See full [CHANGELOG](https://github.com/githubixx/ansible-role-cni/blob/master/CHANGELOG.md)
+
+**Changes in the last two versions:**
+
+0.5.1+1.3.0
+
+- adjust unarchive directory mode
+- add sub path to `cni_tmp_directory` value to avoid change of permissions of parent directory. If `cni_tmp_directory` was set to `/tmp` the `unarchive` operation changed the mode of that directory. Adding a static sub path to `cni_tmp_directory` avoids the problem.
+
+0.5.0+1.3.0
+
+- update `cni_version` to `1.3.0`
+- add Molecule verify step
+- remove Ubuntu `18.04` support (reached EOL)
+- add Ubuntu `22.04` support
+- add `dummy` and `tap` CNI binaries
+- rename Molecule `kvm` scenario to `default` / move `memory` + `cpus` options to boxes
 
 Role Variables
 --------------
@@ -53,7 +71,8 @@ cni_restart_kubelet: false
 
 TODO
 ----
-[] Distribute CNI network configuration files (for [Cilium](https://cilium.io/) this is not needed as CNI files are created by Cilium)
+
+- Distribute CNI network configuration files (for [Cilium](https://cilium.io/) this is not needed as CNI files are created by Cilium)
 
 Example Playbook
 ----------------
