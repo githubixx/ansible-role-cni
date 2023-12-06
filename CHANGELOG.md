@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.0+1.4.0
+
+- update `cni_version` to `1.4.0`
+
 ## 0.5.1+1.3.0
 
 - adjust unarchive directory mode

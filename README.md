@@ -10,7 +10,11 @@ Changelog
 
 See full [CHANGELOG](https://github.com/githubixx/ansible-role-cni/blob/master/CHANGELOG.md)
 
-**Changes in the last two versions:**
+**Recent changes:**
+
+## 0.6.0+1.4.0
+
+- update `cni_version` to `1.4.0`
 
 0.5.1+1.3.0
 
@@ -31,7 +35,7 @@ Role Variables
 
 ```yaml
 # CNI plugin version
-cni_version: "1.3.0"
+cni_version: "1.4.0"
 
 # CNI binary directory
 cni_bin_directory: "/opt/cni/bin"
