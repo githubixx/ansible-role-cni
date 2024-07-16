@@ -22,9 +22,9 @@ platforms:
       - auto_config: true
         network_name: private_network
         type: static
-        ip: 192.168.10.10
+        ip: 172.16.10.10
   - name: test-cni-ubuntu2204
-    box: generic/ubuntu2204
+    box: alvistack/ubuntu-22.04
     memory: 2048
     cpus: 2
     groups:
@@ -33,7 +33,18 @@ platforms:
       - auto_config: true
         network_name: private_network
         type: static
-        ip: 192.168.10.20
+        ip: 172.16.10.20
+  - name: test-cni-ubuntu2404
+    box: alvistack/ubuntu-24.04
+    memory: 2048
+    cpus: 2
+    groups:
+      - ubuntu
+    interfaces:
+      - auto_config: true
+        network_name: private_network
+        type: static
+        ip: 172.16.10.30
   - name: test-cni-arch
     box: archlinux/archlinux
     memory: 2048
@@ -44,7 +55,7 @@ platforms:
       - auto_config: true
         network_name: private_network
         type: static
-        ip: 192.168.10.80
+        ip: 172.16.10.40
 
 provisioner:
   name: ansible
