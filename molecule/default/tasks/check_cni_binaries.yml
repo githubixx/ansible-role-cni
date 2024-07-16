@@ -1,5 +1,5 @@
 ---
-- name: TODO
+- name: Debug output
   ansible.builtin.debug:
     msg: "Checking {{ item.path }} CNI plugin"
 
