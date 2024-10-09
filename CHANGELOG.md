@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.0+1.5.1
+
+- update `cni_version` to `1.5.1`
+
 ## 0.7.0+1.4.0
 
 - add Ubuntu `24.04` support
