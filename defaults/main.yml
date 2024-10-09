@@ -1,9 +1,9 @@
 ---
-# Copyright (C) 2021-2023 Robert Wimmer
+# Copyright (C) 2021-2024 Robert Wimmer
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # CNI plugin version
-cni_version: "1.4.0"
+cni_version: "1.5.1"
 
 # CNI binary directory
 cni_bin_directory: "/opt/cni/bin"
