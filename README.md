@@ -3,13 +3,11 @@ Copyright (C) 2021-2024 Robert Wimmer
 SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
-ansible-role-cni
-================
+# ansible-role-cni
 
 Ansible role to install [CNI - Container Network Interface](https://github.com/containernetworking/plugins). [CNI](https://www.cni.dev/) (Container Network Interface), a Cloud Native Computing Foundation project, consists of a specification and libraries for writing plugins to configure network interfaces in Linux containers, along with a number of supported plugins. CNI concerns itself only with network connectivity of containers and removing allocated resources when the container is deleted. Because of this focus, CNI has a wide range of support and the specification is simple to implement.
 
-Changelog
----------
+## Changelog
 
 **Change history:**
 
@@ -43,8 +41,7 @@ See full [CHANGELOG](https://github.com/githubixx/ansible-role-cni/blob/master/C
 - add `dummy` and `tap` CNI binaries
 - rename Molecule `kvm` scenario to `default` / move `memory` + `cpus` options to boxes
 
-Role Variables
---------------
+## Role Variables
 
 ```yaml
 # CNI plugin version
@@ -86,13 +83,11 @@ cni_url: "https://github.com/containernetworking/plugins/releases/download/v{{ c
 cni_restart_kubelet: false
 ```
 
-TODO
-----
+## TODO
 
 - Distribute CNI network configuration files (for [Cilium](https://cilium.io/) this is not needed as CNI files are created by Cilium)
 
-Example Playbook
-----------------
+## Example Playbook
 
 ```yaml
 - hosts: your-host
@@ -100,8 +95,7 @@ Example Playbook
     - githubixx.cni
 ```
 
-Testing
--------
+## Testing
 
 This role has a small test setup that is created using [Molecule](https://github.com/ansible-community/molecule), libvirt (vagrant-libvirt) and QEMU/KVM. Please see my blog post [Testing Ansible roles with Molecule, libvirt (vagrant-libvirt) and QEMU/KVM](https://www.tauceti.blog/posts/testing-ansible-roles-with-molecule-libvirt-vagrant-qemu-kvm/) how to setup. The test configuration is [here](https://github.com/githubixx/ansible-role-cni/tree/master/molecule/kvm).
 
@@ -125,12 +119,10 @@ To clean up run
 molecule destroy
 ```
 
-License
--------
+## License
 
 GNU GENERAL PUBLIC LICENSE Version 3
 
-Author Information
-------------------
+## Author Information
 
 [http://www.tauceti.blog](http://www.tauceti.blog)
