@@ -31,7 +31,7 @@ See full [CHANGELOG](https://github.com/githubixx/ansible-role-cni/blob/master/C
 
 ```yaml
 # CNI plugin version
-cni_version: "1.5.1"
+cni_version: "1.6.1"
 
 # CNI binary directory
 cni_bin_directory: "/opt/cni/bin"
