@@ -1,9 +1,13 @@
 <!--
-Copyright (C) 2021-2024 Robert Wimmer
+Copyright (C) 2021-2025 Robert Wimmer
 SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
 # Changelog
+
+## 0.9.1+1.6.2
+
+- update `cni_version` to `1.6.2`
 
 ## 0.9.0+1.6.1
 
