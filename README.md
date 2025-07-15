@@ -1,5 +1,5 @@
 <!--
-Copyright (C) 2021-2024 Robert Wimmer
+Copyright (C) 2021-2025 Robert Wimmer
 SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
@@ -15,6 +15,17 @@ See full [CHANGELOG](https://github.com/githubixx/ansible-role-cni/blob/master/C
 
 **Recent changes:**
 
+## 0.10.0+1.7.1
+
+- **UPDATE**
+  - update `cni_version` to `1.7.1`
+
+- **MOLECULE**
+  - Use `generic/arch` Vagrant box instead of `archlinux/archlinux` (no longer available)
+  - Install `openssl` package for Archlinux
+  - Removed Ubuntu 20.04 because reached end of life
+  - Removed 'Upgrade the whole system' task
+
 ## 0.9.1+1.6.2
 
 - update `cni_version` to `1.6.2`
@@ -23,15 +34,11 @@ See full [CHANGELOG](https://github.com/githubixx/ansible-role-cni/blob/master/C
 
 - update `cni_version` to `1.6.1`
 
-## 0.8.0+1.5.1
-
-- update `cni_version` to `1.5.1`
-
 ## Role Variables
 
 ```yaml
 # CNI plugin version
-cni_version: "1.6.2"
+cni_version: "1.7.1"
 
 # CNI binary directory
 cni_bin_directory: "/opt/cni/bin"

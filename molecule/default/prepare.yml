@@ -1,5 +1,5 @@
 ---
-# Copyright (C) 2021-2024 Robert Wimmer
+# Copyright (C) 2021-2025 Robert Wimmer
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 - name: Prepare Archlinux
@@ -20,16 +20,9 @@
         pacman -Sy
       changed_when: false
 
-    - name: Upgrade the whole system
-      ansible.builtin.raw: |
-        pacman --noconfirm -Su
-      args:
-        executable: /bin/bash
-      changed_when: false
-
     - name: Install Python
       ansible.builtin.raw: |
-        pacman -S --noconfirm python
+        pacman -S --noconfirm python openssl
       args:
         executable: /bin/bash
       changed_when: false
