@@ -17,7 +17,14 @@ See full [CHANGELOG](https://github.com/githubixx/ansible-role-cni/blob/master/C
 
 ## 0.10.0+1.7.1
 
-- update `cni_version` to `1.7.1`
+- **UPDATE**
+  - update `cni_version` to `1.7.1`
+
+- **MOLECULE**
+  - Use `generic/arch` Vagrant box instead of `archlinux/archlinux` (no longer available)
+  - Install `openssl` package for Archlinux
+  - Removed Ubuntu 20.04 because reached end of life
+  - Removed 'Upgrade the whole system' task
 
 ## 0.9.1+1.6.2
 
