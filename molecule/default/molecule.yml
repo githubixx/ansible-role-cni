@@ -35,7 +35,7 @@ platforms:
         type: static
         ip: 172.16.10.30
   - name: test-cni-arch
-    box: archlinux/archlinux
+    box: generic/arch
     memory: 2048
     cpus: 2
     groups:
