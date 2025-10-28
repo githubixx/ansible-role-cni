@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # CNI plugin version
-cni_version: "1.7.1"
+cni_version: "1.8.0"
 
 # CNI binary directory
 cni_bin_directory: "/opt/cni/bin"
