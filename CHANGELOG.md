@@ -7,6 +7,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
 ## 0.11.0+1.8.0
 
+- **Breaking**
+  - `meta/main.yml`: Change `min_ansible_version` to 2.15. Ansible 2.9 is end-of-life (EOL).
+
 - **UPDATE**
   - update `cni_version` to `1.8.0`
 
@@ -19,7 +22,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
   - Use `generic/arch` Vagrant box instead of `archlinux/archlinux` (no longer available)
   - Install `openssl` package for Archlinux
   - Removed Ubuntu 20.04 because reached end of life
-  - Removed 'Upgrade the whole system' task
+  - Removed `Upgrade the whole system` task
 
 ## 0.9.1+1.6.2
 

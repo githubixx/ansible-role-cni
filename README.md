@@ -17,6 +17,9 @@ See full [CHANGELOG](https://github.com/githubixx/ansible-role-cni/blob/master/C
 
 ## 0.11.0+1.8.0
 
+- **Breaking**
+  - `meta/main.yml`: Change `min_ansible_version` to 2.15. Ansible 2.9 is end-of-life (EOL).
+
 - **UPDATE**
   - update `cni_version` to `1.8.0`
 
