@@ -22,6 +22,7 @@ See full [CHANGELOG](https://github.com/githubixx/ansible-role-cni/blob/master/C
 
 - **UPDATE**
   - update `cni_version` to `1.8.0`
+  - update `.gitignore`
 
 ## 0.10.0+1.7.1
 
