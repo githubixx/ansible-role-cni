@@ -15,6 +15,11 @@ See full [CHANGELOG](https://github.com/githubixx/ansible-role-cni/blob/master/C
 
 **Recent changes:**
 
+## 0.12.0+1.9.0
+
+- **UPDATE**
+  - update `cni_version` to `1.9.0`
+
 ## 0.11.0+1.8.0
 
 - **Breaking**
