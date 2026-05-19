@@ -15,6 +15,11 @@ See full [CHANGELOG](https://github.com/githubixx/ansible-role-cni/blob/master/C
 
 **Recent changes:**
 
+## 0.12.1+1.9.1
+
+- **UPDATE**
+  - update `cni_version` to `1.9.1`
+
 ## 0.12.0+1.9.0
 
 - **UPDATE**
@@ -48,7 +53,7 @@ See full [CHANGELOG](https://github.com/githubixx/ansible-role-cni/blob/master/C
 
 ```yaml
 # CNI plugin version
-cni_version: "1.8.0"
+cni_version: "1.9.1"
 
 # CNI binary directory
 cni_bin_directory: "/opt/cni/bin"
@@ -100,7 +105,7 @@ cni_restart_kubelet: false
 
 ## Testing
 
-This role has a small test setup that is created using [Molecule](https://github.com/ansible-community/molecule), libvirt (vagrant-libvirt) and QEMU/KVM. Please see my blog post [Testing Ansible roles with Molecule, libvirt (vagrant-libvirt) and QEMU/KVM](https://www.tauceti.blog/posts/testing-ansible-roles-with-molecule-libvirt-vagrant-qemu-kvm/) how to setup. The test configuration is [here](https://github.com/githubixx/ansible-role-cni/tree/master/molecule/kvm).
+This role has a small test setup that is created using [Molecule](https://github.com/ansible-community/molecule), libvirt (vagrant-libvirt) and QEMU/KVM. Please see my blog post [Testing Ansible roles with Molecule, libvirt (vagrant-libvirt) and QEMU/KVM](https://www.tauceti.blog/posts/testing-ansible-roles-with-molecule-libvirt-vagrant-qemu-kvm/) how to setup. The [test configuration is available in the repository](https://github.com/githubixx/ansible-role-cni/tree/master/molecule/kvm).
 
 Afterwards molecule can be executed:
 

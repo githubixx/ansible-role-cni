@@ -5,6 +5,11 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
 # Changelog
 
+## 0.12.1+1.9.1
+
+- **UPDATE**
+  - update `cni_version` to `1.9.1`
+
 ## 0.12.0+1.9.0
 
 - **UPDATE**
