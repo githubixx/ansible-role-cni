@@ -6,6 +6,25 @@
   hosts: all
   vars:
     expected_output: "CNI protocol versions supported"
+    expected_cni_plugins:
+      - macvlan
+      - static
+      - vlan
+      - portmap
+      - host-local
+      - vrf
+      - bridge
+      - tuning
+      - firewall
+      - host-device
+      - sbr
+      - loopback
+      - dhcp
+      - ptp
+      - ipvlan
+      - bandwidth
+      - dummy
+      - tap
   tasks:
     - name: Include default role variables
       ansible.builtin.include_vars:
@@ -13,10 +32,86 @@
         extensions:
           - 'yml'
 
+    - name: Gather CNI bin directory status
+      ansible.builtin.stat:
+        path: "{{ cni_bin_directory }}"
+      register: cni__bin_directory_status
+
+    - name: Ensure CNI bin directory matches role settings
+      ansible.builtin.assert:
+        that:
+          - cni__bin_directory_status.stat.exists
+          - cni__bin_directory_status.stat.isdir
+          - cni__bin_directory_status.stat.mode == "0755"
+          - cni__bin_directory_status.stat.pw_name == cni_owner
+          - cni__bin_directory_status.stat.gr_name == cni_group
+
+    - name: Gather CNI configuration directory status
+      ansible.builtin.stat:
+        path: "{{ cni_conf_directory }}"
+      register: cni__conf_directory_status
+
+    - name: Ensure CNI configuration directory matches role settings
+      ansible.builtin.assert:
+        that:
+          - cni__conf_directory_status.stat.exists
+          - cni__conf_directory_status.stat.isdir
+          - cni__conf_directory_status.stat.mode == "0755"
+          - cni__conf_directory_status.stat.pw_name == cni_owner
+          - cni__conf_directory_status.stat.gr_name == cni_group
+
+    - name: Gather required CNI plugin status
+      ansible.builtin.stat:
+        path: "{{ cni_bin_directory }}/{{ item }}"
+      loop: "{{ expected_cni_plugins }}"
+      register: cni__required_plugin_status
+
+    - name: Ensure required CNI plugins are installed with expected permissions
+      ansible.builtin.assert:
+        that:
+          - item.stat.exists
+          - item.stat.isreg
+          - item.stat.executable
+          - item.stat.mode == cni_binary_mode
+          - item.stat.pw_name == cni_owner
+          - item.stat.gr_name == cni_group
+      loop: "{{ cni__required_plugin_status.results }}"
+      loop_control:
+        label: "{{ item.item }}"
+
     - name: Get list of available CNI plugins
       ansible.builtin.find:
         paths: "{{ cni_bin_directory }}"
+        file_type: file
       register: cni__binaries_found
+
+    - name: Ensure only the expected CNI plugin set is installed
+      ansible.builtin.assert:
+        that:
+          - found_plugins | difference(expected_cni_plugins) | length == 0
+          - expected_cni_plugins | difference(found_plugins) | length == 0
+      vars:
+        found_plugins: "{{ cni__binaries_found.files | map(attribute='path') | map('basename') | list }}"
+
+    - name: Check required host networking tools
+      ansible.builtin.command:
+        argv:
+          - /bin/sh
+          - -c
+          - "command -v {{ item | quote }}"
+      loop:
+        - ip
+      register: cni__required_tools
+      changed_when: false
+      failed_when: false
+
+    - name: Ensure required host networking tools are available
+      ansible.builtin.assert:
+        that:
+          - item.rc == 0
+      loop: "{{ cni__required_tools.results }}"
+      loop_control:
+        label: "{{ item.item }}"
 
     - name: Execute CNI binaries to capture output
       ansible.builtin.include_tasks: tasks/check_cni_binaries.yml
