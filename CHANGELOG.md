@@ -10,6 +10,11 @@ SPDX-License-Identifier: GPL-3.0-or-later
 - **UPDATE**
   - update `cni_version` to `1.9.1`
 
+- **MOLECULE**
+  - use own [githubixx Vagrant boxes](https://portal.cloud.hashicorp.com/vagrant/discover/githubixx)
+  - run `verify` in the default Molecule scenario
+  - strengthen CNI verification with explicit plugin, directory, permission, and host tooling checks
+
 ## 0.12.0+1.9.0
 
 - **UPDATE**
