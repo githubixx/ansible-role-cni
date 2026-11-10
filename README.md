@@ -15,6 +15,13 @@ See full [CHANGELOG](https://github.com/githubixx/ansible-role-cni/blob/master/C
 
 **Recent changes:**
 
+## 0.13.0+1.10.0
+
+- **UPDATE**
+  - update `cni_version` to `1.10.0`
+  - support the `loong64` architecture added in CNI plugins `1.10.0`
+  - document the available `riscv64` architecture
+
 ## 0.12.1+1.9.1
 
 - **UPDATE**
@@ -58,7 +65,7 @@ See full [CHANGELOG](https://github.com/githubixx/ansible-role-cni/blob/master/C
 
 ```yaml
 # CNI plugin version
-cni_version: "1.9.1"
+cni_version: "1.10.0"
 
 # CNI binary directory
 cni_bin_directory: "/opt/cni/bin"
@@ -82,7 +89,8 @@ cni_binary_mode: "0755"
 cni_os: "linux"
 
 # Processor architecture "CNI" should run on.
-# Other possible values: "arm", "arm64", "mips64le", "ppc64le", "s390x"
+# Other possible values:
+# "arm", "arm64", "loong64", "mips64le", "ppc64le", "riscv64", "s390x"
 cni_arch: "amd64"
 
 # Name of the archive file name
