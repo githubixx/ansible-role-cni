@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # CNI plugin version
-cni_version: "1.9.1"
+cni_version: "1.10.0"
 
 # CNI binary directory
 cni_bin_directory: "/opt/cni/bin"
@@ -27,7 +27,8 @@ cni_binary_mode: "0755"
 cni_os: "linux"
 
 # Processor architecture "CNI" should run on.
-# Other possible values: "arm", "arm64", "mips64le", "ppc64le", "s390x"
+# Other possible values:
+# "arm", "arm64", "loong64", "mips64le", "ppc64le", "riscv64", "s390x"
 cni_arch: "amd64"
 
 # Name of the archive file name

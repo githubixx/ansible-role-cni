@@ -5,6 +5,13 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
 # Changelog
 
+## 0.13.0+1.10.0
+
+- **UPDATE**
+  - update `cni_version` to `1.10.0`
+  - support the `loong64` architecture added in CNI plugins `1.10.0`
+  - document the available `riscv64` architecture
+
 ## 0.12.1+1.9.1
 
 - **UPDATE**
